@@ -2614,7 +2614,7 @@ window.addEventListener('scroll', () => {
         { label: 'Storyline', desc: 'Engagement, flow, and impact of the narrative' },
         { label: 'Overall Perf.', desc: 'Direction, cinematography (if film), and final output' }
       ],
-      highlight: 'Genres: Comedy, Drama, Motivational, or based on a Social Message.'
+      highlight: 'Genres: Comedy, Drama, Motivational, or based on a Social Message.<br><br><strong>Submission:</strong> Upload your film to Google Drive, enable access to "Anyone with the link", then email the Drive link to <a href="mailto:sparkion26@gmail.com" style="color:#f5a623;">sparkion26@gmail.com</a><br><strong>Email Subject:</strong> Short Film – Your Name – College Name'
     },
     'photography': {
       name: 'Photography',
@@ -2643,8 +2643,7 @@ window.addEventListener('scroll', () => {
         { label: 'Composition', desc: 'Framing, lighting, and visual balance' },
         { label: 'Originality', desc: 'Unique perspective or timing of the shot' }
       ],
-      highlight: 'Theme: Campus chaos. Email subject must be: Photography Event – Participant Name – College Name'
-    },
+      highlight: '<strong>Theme:</strong> Campus Chaos<br><br><strong>Submission:</strong> Email your photo (JPG/PNG, max 10MB) to <a href="mailto:sparkion26@gmail.com" style="color:#f5a623;">sparkion26@gmail.com</a><br><strong>Email Subject:</strong> Photography Event – Your Name – College Name'    },
     'meme-creation': {
       name: 'Meme Creation',
       tagline: 'Showcase your humor and creativity by making relatable photo memes about college life!',
@@ -2684,7 +2683,7 @@ window.addEventListener('scroll', () => {
         { label: 'Creativity', desc: 'Clever use of templates or original formats' },
         { label: 'Topic Relevance', desc: 'Sticking to the given college life topics' }
       ],
-      highlight: 'Make us laugh! Check the allowed topics list in the rules overlay.'
+      highlight: 'Make us laugh!<br><br><strong>Submission:</strong> Email your meme (JPG/PNG only, no GIFs) to <a href="mailto:sparkion26@gmail.com" style="color:#f5a623;">sparkion26@gmail.com</a><br><strong>Email Subject:</strong> Meme Creation – Your Name – College Name'
     },
     'poster-presentation': {
       name: 'Poster Presentation',
@@ -2718,7 +2717,7 @@ window.addEventListener('scroll', () => {
         { label: 'Visual Design', desc: 'Layout, readability, and aesthetic appeal of the A1 poster' },
         { label: 'Innovation', desc: 'Uniqueness of the idea or research highlighted' }
       ],
-      highlight: 'Theme: Electrical Related. Enhances creativity, communication skills, and subject understanding.'
+      highlight: '<strong>Theme:</strong> Electrical Related<br><br><strong>Submission:</strong> Email your poster (PDF/JPG/PNG, A1 size) to <a href="mailto:sparkion26@gmail.com" style="color:#f5a623;">sparkion26@gmail.com</a> before April 4<br><strong>Email Subject:</strong> Poster Presentation – Your Name – College Name'
     }
   };
 
@@ -2787,6 +2786,26 @@ window.addEventListener('scroll', () => {
     if (ev.highlight) {
       html += `<div class="modal-section"><div class="modal-highlight">${ev.highlight}</div></div>`;
     }
+
+    // Register Button
+    html += `
+      <div class="modal-section" style="text-align:center; padding-top: 0.5rem;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRYgdgBvxgvPkAmTG8fXyFtBRZdeQJy3qZ38vqq7roKMzyHA/viewform"
+           target="_blank"
+           style="display:inline-block; background:var(--gold); color:#060d1f;
+                  font-family:'Outfit',sans-serif; font-weight:800; font-size:0.95rem;
+                  padding:0.9rem 2.5rem; border-radius:10px; text-decoration:none;
+                  box-shadow:0 0 24px rgba(245,166,35,0.4);
+                  transition:transform 0.15s, box-shadow 0.15s;"
+           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(245,166,35,0.6)'"
+           onmouseout="this.style.transform='';this.style.boxShadow='0 0 24px rgba(245,166,35,0.4)'">
+          Register Now →
+        </a>
+        <p style="font-size:0.72rem; color:rgba(255,255,255,0.3); margin-top:0.8rem;">
+          Opens registration form in a new tab
+        </p>
+      </div>
+    `;
 
     body.innerHTML = html;
 
