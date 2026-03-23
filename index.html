@@ -1183,9 +1183,15 @@ footer {
 
 <!-- PRELOADER -->
 <div id="preloader">
-  <img src="logo.jpg" alt="SPARKION'26 Logo" class="preloader-logo">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:1.5rem;">
+    <img src="logo.jpg" alt="SPARKION'26 Logo" class="preloader-logo">
+    <div style="font-family:'Orbitron',sans-serif; font-size:1rem; color:var(--gold); letter-spacing:0.2em;" id="preloader-pct">0%</div>
+    <div style="width:220px; height:3px; background:rgba(255,255,255,0.08); border-radius:999px; overflow:hidden;">
+      <div id="preloader-bar" style="height:100%; width:0%; background:var(--gold); border-radius:999px; transition:width 0.2s ease; box-shadow:0 0 10px rgba(245,166,35,0.6);"></div>
+    </div>
+    <div style="font-family:'Outfit',sans-serif; font-size:0.7rem; color:var(--muted); letter-spacing:0.15em; text-transform:uppercase;" id="preloader-msg">Initializing...</div>
+  </div>
 </div>
-<canvas id="bg-canvas"></canvas>
 
 <!-- CUSTOM CURSOR -->
 <div class="cursor-dot" id="cursorDot"></div>
@@ -1698,6 +1704,7 @@ footer {
 /* ═══ PARTICLE BACKGROUND (Enhanced) ═══ */
 (function () {
   const canvas = document.getElementById('bg-canvas');
+if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [], t = 0;
   let mouseX = -9999, mouseY = -9999;
@@ -2884,14 +2891,48 @@ window.addEventListener('scroll', () => {
     }
   });
 
-  // Preloader removal
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const p = document.getElementById('preloader');
-      if (p) p.classList.add('hidden');
-      document.body.classList.remove('loading');
-    }, 2500);
-  });
+// Preloader with progress
+  (function() {
+    const bar = document.getElementById('preloader-bar');
+    const pct = document.getElementById('preloader-pct');
+    const msg = document.getElementById('preloader-msg');
+    const messages = [
+      'Initializing...', 'Loading assets...', 'Building circuits...',
+      'Powering up...', 'Almost ready...'
+    ];
+    let progress = 0;
+    let msgIndex = 0;
+
+    const interval = setInterval(() => {
+      // Faster at start, slower near end
+      const increment = progress < 70 ? (4 + Math.random() * 6) : (1 + Math.random() * 2);
+      progress = Math.min(progress + increment, 99);
+
+      if (bar) bar.style.width = progress + '%';
+      if (pct) pct.textContent = Math.floor(progress) + '%';
+
+      // Cycle messages
+      const newMsgIndex = Math.floor((progress / 100) * messages.length);
+      if (newMsgIndex !== msgIndex && newMsgIndex < messages.length) {
+        msgIndex = newMsgIndex;
+        if (msg) msg.textContent = messages[msgIndex];
+      }
+    }, 80);
+
+    window.addEventListener('load', () => {
+      clearInterval(interval);
+      // Snap to 100%
+      if (bar) bar.style.width = '100%';
+      if (pct) pct.textContent = '100%';
+      if (msg) msg.textContent = 'Let\'s go!';
+
+      setTimeout(() => {
+        const p = document.getElementById('preloader');
+        if (p) p.classList.add('hidden');
+        document.body.classList.remove('loading');
+      }, 600);
+    });
+  })();
   // Countdown logic
   (function() {
     const eventTime = new Date('April 7, 2026 09:00:00').getTime();
