@@ -949,6 +949,63 @@ footer {
   .modal-scoring-grid { grid-template-columns: 1fr; }
 }
 
+/* ═══ SECTION GLOWS ═══ */
+.section-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+  z-index: 0;
+  animation: sectionGlowPulse 8s ease-in-out infinite;
+}
+@keyframes sectionGlowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+/* Sparkle dots */
+.sparkle {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  pointer-events: none;
+  z-index: 1;
+  animation: sparkleFade 2s ease-in-out infinite;
+}
+@keyframes sparkleFade {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Animated grid overlay for sections */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(30,111,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30,111,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.section:hover .grid-overlay,
+.section-alt:hover .grid-overlay {
+  opacity: 1;
+}
+
+/* ═══ DISABLE CUSTOM CURSOR ON TOUCH ═══ */
+@media (hover: none) and (pointer: coarse) {
+  body { cursor: auto !important; }
+  a, button, .ev-tab, .nav-btn, .btn-gold, .btn-outline, .sub-btn, .btn-full, .hero-pill,
+  input, select, textarea, .ev-card[data-event], .modal-close-btn {
+    cursor: auto !important;
+  }
+  .cursor-dot, .cursor-ring, .cursor-trail { display: none !important; }
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 860px) {
   .about-grid, .coord-grid, .reg-layout { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -957,6 +1014,117 @@ footer {
   .nav-links { display: none; }
   .fr { grid-template-columns: 1fr; }
   .timeline::before { left: 68px; }
+  .section { padding: 4rem 1.5rem; }
+  .hero-inner { padding: 2rem 1.5rem 4rem; }
+  .hero-pills { gap: 0.5rem; }
+  .hero-pill { padding: 0.55rem 1rem; }
+  .pill-val { font-size: 0.85rem; }
+  .ev-panel.on { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.8rem; }
+  .ev-card { padding: 1.3rem 1.1rem; }
+  .ev-emoji { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .ev-name { font-size: 0.82rem; }
+  .ev-desc { font-size: 0.78rem; }
+  .tl-time { font-size: 0.75rem; min-width: 56px; }
+  .tl-title { font-size: 0.9rem; }
+  .tl-sub { font-size: 0.8rem; }
+  .coord-card { padding: 0.85rem 1rem; }
+  .coord-name { font-size: 0.82rem; }
+  .coord-badge { font-size: 0.6rem; padding: 0.15rem 0.5rem; }
+  .reg-form { padding: 1.8rem; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .stat-n { font-size: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 0 1rem; height: 56px; }
+  .nav-logo { font-size: 0.95rem; gap: 8px; }
+  .nav-logo-bolt { width: 18px; height: 18px; }
+  .nav-btn { font-size: 0.72rem; padding: 0.4rem 0.9rem; border-radius: 6px; }
+  #hero { min-height: 100svh; padding-top: 56px; }
+  .hero-inner { padding: 1.5rem 1rem 3rem; }
+  .hero-tag { font-size: 0.68rem; padding: 0.3rem 0.8rem; }
+  .hero-college { font-size: 0.75rem; }
+  .hero-dept { font-size: 0.72rem; margin-bottom: 1.5rem; }
+  .title-rest { font-size: clamp(2.2rem, 12vw, 4rem); }
+  .thunder-s { width: clamp(50px, 13vw, 80px); height: clamp(58px, 15vw, 92px); }
+  .hero-year { font-size: clamp(1rem, 3vw, 1.4rem); letter-spacing: 0.15em; }
+  .hero-desc { font-size: 0.9rem; margin-bottom: 1.8rem; }
+  .hero-pills { flex-direction: column; align-items: center; gap: 0.4rem; }
+  .hero-pill { width: 100%; max-width: 260px; text-align: center; }
+  .hero-btns { flex-direction: column; align-items: center; width: 100%; }
+  .btn-gold, .btn-outline { width: 100%; max-width: 280px; text-align: center; font-size: 0.88rem; }
+  .scroll-cue { display: none; }
+  .ticker-wrap { height: 30px; }
+  .tick-item { font-size: 0.6rem; padding: 0 1.2rem; }
+  .section { padding: 3rem 1rem; }
+  .section-heading { font-size: clamp(1.3rem, 4vw, 1.7rem); }
+  .section-sub { font-size: 0.88rem; }
+  .section-eyebrow { font-size: 0.65rem; }
+  .ev-tabs { gap: 0.35rem; }
+  .ev-tab { font-size: 0.75rem; padding: 0.45rem 1rem; }
+  .ev-panel.on { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .ev-card { padding: 1.1rem 0.9rem; border-radius: 10px; }
+  .ev-emoji { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .ev-name { font-size: 0.78rem; margin-bottom: 0.3rem; }
+  .ev-desc { font-size: 0.72rem; line-height: 1.5; }
+  .ev-card[data-event] .ev-name::after { font-size: 0.6rem; margin-top: 0.4rem; }
+  .timeline::before { left: 58px; }
+  .tl-item { gap: 1rem; padding: 1rem 0; }
+  .tl-time { font-size: 0.7rem; min-width: 48px; }
+  .tl-dot { width: 10px; height: 10px; }
+  .tl-title { font-size: 0.85rem; }
+  .tl-sub { font-size: 0.75rem; }
+  .coord-grid { gap: 2rem; }
+  .coord-group-label { font-size: 0.7rem; }
+  .coord-card { padding: 0.75rem 0.9rem; gap: 0.8rem; }
+  .coord-avatar { width: 36px; height: 36px; font-size: 0.72rem; }
+  .coord-name { font-size: 0.8rem; }
+  .coord-role { font-size: 0.7rem; }
+  .why-card { padding: 1.8rem; border-radius: 16px; }
+  .why-title { font-size: 0.9rem; }
+  .why-icon { width: 32px; height: 32px; border-radius: 8px; font-size: 0.9rem; }
+  .why-text { font-size: 0.82rem; }
+  .stat-card { padding: 0.9rem 0.7rem; }
+  .stat-n { font-size: 1.3rem; }
+  .stat-l { font-size: 0.65rem; }
+  .reg-form { padding: 1.5rem; border-radius: 16px; }
+  .form-heading { font-size: 0.9rem; }
+  .fi, .fs { font-size: 0.85rem; padding: 0.65rem 0.9rem; }
+  .fee-note { font-size: 0.78rem; padding: 0.6rem 0.9rem; }
+  .sub-btn { font-size: 0.88rem; padding: 0.85rem; }
+  .reg-hl { padding: 0.8rem 1rem; }
+  .reg-hl-icon { font-size: 1rem; }
+  .reg-hl-val { font-size: 0.82rem; }
+  .contact-card { padding: 1.4rem; }
+  .contact-icon { width: 38px; height: 38px; border-radius: 10px; font-size: 0.95rem; margin-bottom: 0.8rem; }
+  .contact-label { font-size: 0.65rem; }
+  .contact-val { font-size: 0.82rem; }
+  .footer-grid { gap: 1.5rem; }
+  .footer-logo { font-size: 1.1rem; }
+  .footer-tagline { font-size: 0.78rem; }
+  .footer-col-title { font-size: 0.62rem; }
+  .footer-links a, .footer-links span { font-size: 0.8rem; }
+  .footer-copy { font-size: 0.68rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .modal-box { width: 97%; max-height: 92vh; border-radius: 16px; }
+  .modal-header { padding: 0.4rem 1.2rem 1rem; }
+  .modal-event-name { font-size: 1.2rem; }
+  .modal-event-tagline { font-size: 0.82rem; }
+  .modal-body { padding: 1.2rem; }
+  .modal-round { padding: 1rem 1.1rem; border-radius: 10px; }
+  .modal-round-name { font-size: 0.88rem; }
+  .modal-section-title { font-size: 0.7rem; }
+  .modal-scoring-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 380px) {
+  .ev-panel.on { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr; }
+  .hero-title { gap: 0; }
+  .title-rest { font-size: 2rem; }
+  .thunder-s { width: 45px; height: 52px; }
+  .modal-scoring-grid { grid-template-columns: 1fr; }
+  .nav-btn { display: none; }
 }
 </style>
 </head>
@@ -1033,12 +1201,12 @@ footer {
     <div class="hero-pills">
       <div class="hero-pill"><span class="pill-key">Date</span><span class="pill-val">April 7, 2026</span></div>
       <div class="hero-pill"><span class="pill-key">Venue</span><span class="pill-val">GCE Tirunelveli</span></div>
-      <div class="hero-pill"><span class="pill-key">Entry Fee</span><span class="pill-val">₹250 only</span></div>
+      <div class="hero-pill"><span class="pill-key">Entry Fee</span><span class="pill-val">₹250 (Pay Online)</span></div>
       <div class="hero-pill"><span class="pill-key">Last Date</span><span class="pill-val">April 5, 2026</span></div>
     </div>
 
     <div class="hero-btns">
-      <a href="#register" class="btn-gold">Register Now — ₹250</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRYgdgBvxgvPkAmTG8fXyFtBRZdeQJy3qZ38vqq7roKMzyHA/viewform" target="_blank" class="btn-gold">Register Now — ₹250</a>
       <a href="#events" class="btn-outline">See All Events ↓</a>
     </div>
   </div>
@@ -1125,11 +1293,11 @@ footer {
     </div>
 
     <div class="ev-panel" id="p-fun">
-      <div class="ev-card reveal"><span class="ev-emoji">🎬</span><div class="ev-name">Cine Quiz</div><p class="ev-desc">A buzzer quiz on Tamil and Indian cinema — songs, actors, and iconic dialogues.</p></div>
+      <div class="ev-card reveal" data-event="cine-quiz"><span class="ev-emoji">🎬</span><div class="ev-name">Cine Quiz</div><p class="ev-desc">A buzzer quiz on Tamil and Indian cinema — songs, actors, and iconic dialogues.</p></div>
       <div class="ev-card reveal"><span class="ev-emoji">🖼️</span><div class="ev-name">Visual Vault</div><p class="ev-desc">Spot hidden images and solve visual puzzles. Sharp eyes and quick thinking win!</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">🎵</span><div class="ev-name">Paatu Paada Vaa</div><p class="ev-desc">Guess the Tamil song and sing the next line. Fun, musical, and full of energy!</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">🧠</span><div class="ev-name">Minute Memory</div><p class="ev-desc">60 seconds to memorize. 60 seconds to recall. An intense and fun memory battle.</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">🗺️</span><div class="ev-name">Clue the View</div><p class="ev-desc">Identify famous places from clever visual clues. Great for travel lovers!</p></div>
+      <div class="ev-card reveal" data-event="paatu-paada-vaa"><span class="ev-emoji">🎵</span><div class="ev-name">Paatu Paada Vaa</div><p class="ev-desc">Guess the Tamil song and sing the next line. Fun, musical, and full of energy!</p></div>
+      <div class="ev-card reveal" data-event="minutes-mystery"><span class="ev-emoji">🧠</span><div class="ev-name">Minutes Mystery</div><p class="ev-desc">60 seconds to memorize. 60 seconds to recall. An intense and fun memory battle.</p></div>
+      <div class="ev-card reveal" data-event="clue-the-view"><span class="ev-emoji">🗺️</span><div class="ev-name">Clue the View</div><p class="ev-desc">Identify famous places from clever visual clues. Great for travel lovers!</p></div>
     </div>
 
     <div class="ev-panel" id="p-online">
@@ -1194,39 +1362,30 @@ footer {
         <h2 class="section-heading">Register Now</h2>
         <p class="section-sub">
           Simple, quick registration. Fill in your details, pick your event, and you're in.
-          Entry fee of just ₹250 paid at the venue on the day.
+          The entry fee of ₹250 is paid online during registration via Google Forms.
         </p>
         <div class="reg-highlights">
           <div class="reg-hl"><div class="reg-hl-icon">📅</div><div><div class="reg-hl-key">Event Date</div><div class="reg-hl-val">April 7, 2026 (Tuesday)</div></div></div>
           <div class="reg-hl"><div class="reg-hl-icon">⏰</div><div><div class="reg-hl-key">Registration Closes</div><div class="reg-hl-val">April 5, 2026 — Don't miss it!</div></div></div>
-          <div class="reg-hl"><div class="reg-hl-icon">💰</div><div><div class="reg-hl-key">Entry Fee</div><div class="reg-hl-val">₹250 per participant</div></div></div>
+          <div class="reg-hl"><div class="reg-hl-icon">💳</div><div><div class="reg-hl-key">Payment</div><div class="reg-hl-val">₹250 paid via Google Form</div></div></div>
           <div class="reg-hl"><div class="reg-hl-icon">🏠</div><div><div class="reg-hl-key">Accommodation</div><div class="reg-hl-val">Free for outstation participants</div></div></div>
         </div>
       </div>
 
-      <div class="reg-form reveal-right">
-        <div class="form-heading">Fill in Your Details</div>
-        <div class="fg"><label class="fl">Your Full Name</label><input type="text" class="fi" placeholder="e.g. Arun Kumar"></div>
-        <div class="fr">
-          <div class="fg"><label class="fl">Email Address</label><input type="email" class="fi" placeholder="you@example.com"></div>
-          <div class="fg"><label class="fl">Phone Number</label><input type="tel" class="fi" placeholder="+91 00000 00000"></div>
+      <div class="reveal-right" style="display: flex; flex-direction: column; justify-content: center;">
+        <div style="background: rgba(11,23,53,0.6); border: 1px solid rgba(245,166,35,0.2); border-radius: 20px; padding: 3rem 2.5rem; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
+          <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.8rem;">Official Registration</h3>
+          <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem;">
+            Registration and payment for all events are handled securely through our official Google Form. Please have your payment details ready before proceeding.
+          </p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRYgdgBvxgvPkAmTG8fXyFtBRZdeQJy3qZ38vqq7roKMzyHA/viewform" target="_blank" class="sub-btn" style="display: inline-block; text-decoration: none;">
+            Open Registration Form →
+          </a>
+          <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 1.5rem;">
+            Link opens securely in a new tab
+          </p>
         </div>
-        <div class="fr">
-          <div class="fg"><label class="fl">College Name</label><input type="text" class="fi" placeholder="Your institution"></div>
-          <div class="fg"><label class="fl">Year of Study</label>
-            <select class="fs"><option value="">Select year</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select>
-          </div>
-        </div>
-        <div class="fg"><label class="fl">Choose Your Event</label>
-          <select class="fs">
-            <option value="">Select an event</option>
-            <optgroup label="⚡ Technical"><option>Idea Spark</option><option>Code Clash</option><option>Tech Talk</option><option>Electro Quiz</option><option>Circuit Hunt</option></optgroup>
-            <optgroup label="🎭 Fun &amp; Games"><option>Cine Quiz</option><option>Visual Vault</option><option>Paatu Paada Vaa</option><option>Minute Memory</option><option>Clue the View</option></optgroup>
-            <optgroup label="🌐 Online"><option>Photography</option><option>Poster Design</option><option>Presentation</option><option>Meme Creation</option><option>Short Film</option></optgroup>
-          </select>
-        </div>
-        <div class="fee-note">🎟️ Entry Fee: ₹250 — Pay at the venue on the day</div>
-        <button class="sub-btn" id="subBtn">Register for SPARKION'26 →</button>
       </div>
     </div>
   </div>
@@ -1294,7 +1453,7 @@ footer {
       <ul class="footer-links">
         <li><span>📅 April 7, 2026</span></li>
         <li><span>⏰ Last date: April 5</span></li>
-        <li><span>💰 Entry: ₹250</span></li>
+        <li><span>💳 Entry: ₹250 (Pay online)</span></li>
         <li><span>🏠 Accommodation available</span></li>
         <li><a href="mailto:sparkion26@gmail.com">✉️ sparkion26@gmail.com</a></li>
       </ul>
@@ -1307,11 +1466,16 @@ footer {
 </footer>
 
 <script>
-/* ═══ PARTICLE BACKGROUND ═══ */
+/* ═══ PARTICLE BACKGROUND (Enhanced) ═══ */
 (function () {
   const canvas = document.getElementById('bg-canvas');
   const ctx = canvas.getContext('2d');
   let W, H, particles = [], t = 0;
+  let mouseX = -9999, mouseY = -9999;
+  const isMobile = window.innerWidth < 600;
+  const PARTICLE_COUNT = isMobile ? 40 : 120;
+  const CONNECTION_DIST = isMobile ? 80 : 120;
+  const MOUSE_RADIUS = 180;
 
   function resize() {
     W = canvas.width = window.innerWidth;
@@ -1320,46 +1484,99 @@ footer {
   resize();
   window.addEventListener('resize', resize);
 
+  // Track mouse
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+  });
+  document.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
+
   // Generate particles
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
       x: Math.random() * 2000,
-      y: Math.random() * 1200,
-      r: 0.6 + Math.random() * 1.8,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.18,
-      alpha: 0.06 + Math.random() * 0.18,
-      color: Math.random() > 0.7 ? '245,166,35' : '30,111,255',
+      y: Math.random() * 1400,
+      r: 0.5 + Math.random() * 2,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.22,
+      alpha: 0.05 + Math.random() * 0.2,
+      color: Math.random() > 0.65 ? '245,166,35' : (Math.random() > 0.5 ? '30,111,255' : '100,160,255'),
       pulse: Math.random() * Math.PI * 2,
+      baseR: 0.5 + Math.random() * 2,
     });
   }
 
   // Lightning bolts
   let bolts = [], boltTimer = 0;
   function spawnBolt() {
-    const x1 = Math.random() * W, y1 = 0;
-    const x2 = x1 + (Math.random() - 0.5) * 200, y2 = Math.random() * H * 0.5;
+    const startSide = Math.random();
+    let x1, y1, x2, y2;
+    if (startSide < 0.5) {
+      x1 = Math.random() * W; y1 = 0;
+      x2 = x1 + (Math.random() - 0.5) * 300; y2 = Math.random() * H * 0.6;
+    } else {
+      x1 = Math.random() * W; y1 = H;
+      x2 = x1 + (Math.random() - 0.5) * 250; y2 = H - Math.random() * H * 0.5;
+    }
     const pts = [{ x: x1, y: y1 }];
     let cx = x1, cy = y1;
-    const steps = 6 + Math.floor(Math.random() * 5);
+    const steps = 8 + Math.floor(Math.random() * 6);
     for (let i = 1; i <= steps; i++) {
-      cx = x1 + (x2 - x1) * (i / steps) + (Math.random() - 0.5) * 60;
-      cy = y1 + (y2 - y1) * (i / steps) + (Math.random() - 0.5) * 20;
+      cx = x1 + (x2 - x1) * (i / steps) + (Math.random() - 0.5) * 80;
+      cy = y1 + (y2 - y1) * (i / steps) + (Math.random() - 0.5) * 30;
       pts.push({ x: cx, y: cy });
     }
-    bolts.push({ pts, life: 0, maxLife: 18 + Math.random() * 12 });
+    bolts.push({ pts, life: 0, maxLife: 20 + Math.random() * 15, width: 0.5 + Math.random() * 1 });
+  }
+
+  // Shooting stars
+  let stars = [], starTimer = 0;
+  function spawnStar() {
+    stars.push({
+      x: Math.random() * W,
+      y: Math.random() * H * 0.4,
+      vx: 3 + Math.random() * 4,
+      vy: 1.5 + Math.random() * 2,
+      life: 0,
+      maxLife: 30 + Math.random() * 20,
+      len: 40 + Math.random() * 60
+    });
   }
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-
-    // Moving particles with connections
     t += 0.008;
+
+    // Update & draw particles with mouse interaction
     particles.forEach(p => {
+      // Mouse gravitation
+      const dmx = mouseX - p.x;
+      const dmy = mouseY - p.y;
+      const dm = Math.sqrt(dmx * dmx + dmy * dmy);
+      if (dm < MOUSE_RADIUS && dm > 1) {
+        const force = (1 - dm / MOUSE_RADIUS) * 0.015;
+        p.vx += dmx * force;
+        p.vy += dmy * force;
+        p.r = p.baseR * (1 + (1 - dm / MOUSE_RADIUS) * 1.5);
+      } else {
+        p.r += (p.baseR - p.r) * 0.05;
+      }
+
+      // Damping
+      p.vx *= 0.99; p.vy *= 0.99;
       p.x += p.vx; p.y += p.vy;
       if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
       if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-      const a = p.alpha * (0.7 + 0.3 * Math.sin(t * 1.5 + p.pulse));
+
+      const a = p.alpha * (0.6 + 0.4 * Math.sin(t * 1.5 + p.pulse));
+
+      // Glow effect for gold particles
+      if (p.color === '245,166,35' && p.r > 1.5) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color},${a * 0.15})`;
+        ctx.fill();
+      }
+
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${p.color},${a})`;
@@ -1372,31 +1589,80 @@ footer {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
+        if (dist < CONNECTION_DIST) {
+          const fade = 1 - dist / CONNECTION_DIST;
+          // Use gold connection if near mouse
+          const midX = (particles[i].x + particles[j].x) / 2;
+          const midY = (particles[i].y + particles[j].y) / 2;
+          const dMouse = Math.sqrt((mouseX - midX) ** 2 + (mouseY - midY) ** 2);
+          const isNearMouse = dMouse < MOUSE_RADIUS;
+          const lineColor = isNearMouse ? `rgba(245,166,35,${0.12 * fade})` : `rgba(30,111,255,${0.06 * fade})`;
+
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(30,111,255,${0.06 * (1 - dist / 100)})`;
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = isNearMouse ? 0.8 : 0.4;
           ctx.stroke();
         }
       }
     }
 
-    // Lightning bolts (subtle, rare)
+    // Mouse glow ring
+    if (mouseX > 0 && mouseY > 0) {
+      const grad = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, MOUSE_RADIUS);
+      grad.addColorStop(0, 'rgba(245,166,35,0.04)');
+      grad.addColorStop(0.5, 'rgba(30,111,255,0.02)');
+      grad.addColorStop(1, 'transparent');
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, MOUSE_RADIUS, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+
+    // Lightning bolts
     boltTimer += 0.016;
-    if (boltTimer > 4 + Math.random() * 6) { spawnBolt(); boltTimer = 0; }
-    bolts.forEach((b, bi) => {
+    if (boltTimer > 3 + Math.random() * 5) { spawnBolt(); boltTimer = 0; }
+    bolts = bolts.filter(b => {
       b.life++;
-      const a = Math.max(0, (1 - b.life / b.maxLife)) * 0.18;
-      if (a <= 0) { bolts.splice(bi, 1); return; }
+      const a = Math.max(0, (1 - b.life / b.maxLife)) * 0.25;
+      if (a <= 0) return false;
       ctx.beginPath();
       ctx.moveTo(b.pts[0].x, b.pts[0].y);
       b.pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
       ctx.strokeStyle = `rgba(255,228,77,${a})`;
-      ctx.lineWidth = 0.8;
+      ctx.lineWidth = b.width * (1 - b.life / b.maxLife);
       ctx.stroke();
+      // Glow
+      ctx.strokeStyle = `rgba(245,166,35,${a * 0.4})`;
+      ctx.lineWidth = b.width * 3 * (1 - b.life / b.maxLife);
+      ctx.stroke();
+      return true;
     });
+
+    // Shooting stars
+    if (!isMobile) {
+      starTimer += 0.016;
+      if (starTimer > 6 + Math.random() * 10) { spawnStar(); starTimer = 0; }
+      stars = stars.filter(s => {
+        s.life++;
+        s.x += s.vx; s.y += s.vy;
+        const a = Math.max(0, 1 - s.life / s.maxLife);
+        if (a <= 0) return false;
+        const tailX = s.x - s.vx * (s.len / 5);
+        const tailY = s.y - s.vy * (s.len / 5);
+        const grad = ctx.createLinearGradient(s.x, s.y, tailX, tailY);
+        grad.addColorStop(0, `rgba(255,255,255,${a * 0.6})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+        return true;
+      });
+    }
 
     requestAnimationFrame(draw);
   }
@@ -1461,17 +1727,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-/* ═══ FORM SUBMIT ═══ */
-document.getElementById('subBtn').addEventListener('click', function () {
-  this.textContent = '✓ You\'re registered! See you on April 7th 🎉';
-  this.style.background = '#22c55e';
-  this.style.boxShadow = '0 0 24px rgba(34,197,94,0.4)';
-  setTimeout(() => {
-    this.textContent = 'Register for SPARKION\'26 →';
-    this.style.background = '';
-    this.style.boxShadow = '';
-  }, 5000);
-});
 
 /* ═══ CUSTOM CURSOR ═══ */
 (function() {
@@ -1859,6 +2114,204 @@ document.getElementById('subBtn').addEventListener('click', function () {
         { label: 'Practical Implementation', desc: 'Quality of breadboard circuit building' }
       ],
       highlight: ''
+    },
+    'clue-the-view': {
+      name: 'Clue the View',
+      tagline: 'A fun visual guessing game where participants identify places, objects, or situations using images and visual clues.',
+      team: '2 members per team (recommended)',
+      duration: '3 elimination rounds',
+      rounds: [
+        {
+          name: 'Round 1: Rapid View Identification',
+          meta: '5 seconds per image',
+          desc: 'Participants will be shown a series of 10-15 images quickly on the screen. Each image represents a place, object, or situation. Teams must identify the image and write the correct answer on their answer sheet.',
+          points: [
+            'Each image will be shown for 5 seconds',
+            'Teams must write answers on the given sheet',
+            'Discussion between different teams is not allowed',
+            'Each correct answer carries 1 point',
+            'Top scoring teams (top 5 or 6) qualify for Round 2'
+          ]
+        },
+        {
+          name: 'Round 2: Picture Combination (Guess the View)',
+          meta: '10 sec per question | +10 Points',
+          desc: 'Participants will see 2 or 3 pictures combined together. By understanding the meaning of each picture and combining them, teams must guess the final word, place, or situation. (Example: Blue color + Sand + Water = Beach)',
+          points: [
+            'Teams will answer by raising their hand or using a buzzer',
+            'Each team gets one chance to answer',
+            'Time limit for each question is 10 sec or more',
+            'Correct answer earns 10 points',
+            'If the first team answers incorrectly, chance passes to another team'
+          ]
+        },
+        {
+          name: 'Round 3: Describe the View (Final Round)',
+          meta: '60 seconds playing time',
+          desc: 'One participant from the team will see an image on the screen and must describe the picture to their teammate without saying the actual word. The teammate must guess the correct answer.',
+          points: [
+            'Each team will have one describer and one guesser',
+            'The describer cannot say the actual word or part of the word',
+            'Actions, spelling, or writing are not allowed',
+            'Time limit is 60 seconds',
+            'Guess as many correct answers as possible within time',
+            'Each correct answer earns 10 points'
+          ]
+        }
+      ],
+      rules: [
+        'Mobile phones or electronic devices are strictly prohibited',
+        'Any form of cheating or misconduct will lead to disqualification',
+        'Teams must answer within the given time limit',
+        'The judge\'s decision will be final and binding',
+        'Participants must maintain discipline and fair play'
+      ],
+      scoring: [
+        { label: 'Observation Skills', desc: 'Ability to quickly identify and interpret visual clues' },
+        { label: 'Logical Thinking', desc: 'Combining multiple abstract images to form a coherent answer' },
+        { label: 'Communication', desc: 'Effectively describing images without using forbidden words (Round 3)' },
+        { label: 'Speed', desc: 'Answering quickly and maximizing correct guesses within time limits' }
+      ],
+      highlight: 'Theme: Nature and Electrical related.'
+    },
+    'cine-quiz': {
+      name: 'Cine Quiz',
+      tagline: 'An exciting and entertaining event designed for movie enthusiasts to test their knowledge of cinema across three knockout rounds.',
+      team: '2 to 3 members per team',
+      duration: '45 minutes (15 mins per round)',
+      rounds: [
+        {
+          name: 'Round 1: Cine Shuffle',
+          meta: 'Duration: 15 minutes',
+          desc: 'Designed to test participants\' quick thinking. Contestants will be presented with jumbled words related to movies (film titles, actor & actress names). Teams must quickly rearrange the letters to identify the correct answer.',
+          points: [
+            'Unscramble jumbled movie titles and names',
+            'Must answer within the given time limit',
+            'Knockout round: lowest scoring teams eliminated'
+          ]
+        },
+        {
+          name: 'Round 2: Dialogue Decode',
+          meta: 'Duration: 15 minutes',
+          desc: 'The host will present famous Tamil movie dialogues translated into English. Participants must identify the original Tamil dialogue, along with the actor & actress who delivered it.',
+          points: [
+            'Identify original Tamil dialogue from English translation',
+            'Must also identify the actor and actress',
+            'Knockout round'
+          ]
+        },
+        {
+          name: 'Round 3: Frame to Fame (Visual Connect)',
+          meta: 'Duration: 15 minutes',
+          desc: 'A visual round challenging participants to identify movies through a series of images. Contestants will be shown scenes, objects, locations, or symbolic clues related to a particular film.',
+          points: [
+            'Observe and connect visual hints to guess the movie',
+            'Final deciding round for the winners'
+          ]
+        }
+      ],
+      rules: [
+        'Each team should consist of 2-3 members',
+        'No use of mobile phones, internet, or any electronic gadgets is permitted',
+        'Points awarded for correct answers, no points for incorrect/unanswered',
+        'Every round is a knockout round',
+        'The quiz master\'s decision will be final and binding'
+      ],
+      scoring: [
+        { label: 'Cinematic Knowledge', desc: 'Breadth of knowledge covering actors, movies, and scenes' },
+        { label: 'Quick Thinking', desc: 'Speed in unscrambling words and decoding translations' },
+        { label: 'Visual Perception', desc: 'Connecting abstract or symbolic images to a movie' }
+      ],
+      highlight: ''
+    },
+    'paatu-paada-vaa': {
+      name: 'Paatu Paada Vaa...!',
+      tagline: 'Test your musical knowledge, listening skills, and teamwork in this exciting Tamil song guessing and singing competition.',
+      team: 'Exactly 2 members per team',
+      duration: '2 rounds + Tie-breaker if needed',
+      rounds: [
+        {
+          name: 'Round 1: Guess the Song',
+          meta: '+10 Points Base | -5 Penalty',
+          desc: 'Background music (BGM) will be played. Teams must identify the correct song from the music clip.',
+          points: [
+            'Teams must raise their hands to answer',
+            'First team to raise gets the chance to answer',
+            'Only one answer is allowed per attempt',
+            'Correct answer: +10 points',
+            'Incorrect answer: -5 points',
+            'If incorrect, the question passes to other teams'
+          ]
+        },
+        {
+          name: 'Round 2: Bioscope',
+          meta: '30 seconds | +10 Points Base',
+          desc: 'A set of pictures representing a song will be displayed on screen. Teams must guess the correct song based on the visual clues.',
+          points: [
+            '30 seconds time limit per question',
+            'Teams must raise hands to answer; first to raise gets the chance',
+            'Correct answer: +10 points',
+            'Incorrect answer: -5 points'
+          ]
+        }
+      ],
+      rules: [
+        'Team must have exactly 2 members. Individual participation is not allowed',
+        'Scores carry forward cumulatively across rounds',
+        'In case of a tie, a tie-breaker round will be conducted',
+        'Use of mobile phones, smartwatches, or any electronic gadgets is strictly prohibited',
+        'Any form of malpractice or misbehavior leads to immediate disqualification',
+        'The decision of the quiz master/judging panel will be final and binding'
+      ],
+      scoring: [
+        { label: 'Musical Recognition', desc: 'Speed and accuracy in identifying songs from BGM' },
+        { label: 'Visual Interpretation', desc: 'Decoding pictures into song names in the Bioscope round' },
+        { label: 'Penalty Management', desc: 'Balancing speed with accuracy to avoid negative points' }
+      ],
+      highlight: 'Team with the highest total score at the end of both rounds wins.'
+    },
+    'minutes-mystery': {
+      name: 'Minutes Mystery',
+      tagline: 'An intense memory battle testing logic, observation skills, and analytical thinking using 1-minute video clips.',
+      team: '2 to 3 members per team',
+      duration: '2 rounds',
+      rounds: [
+        {
+          name: 'Round 1: Rapid Recall (Pen & Paper)',
+          meta: '10-15 seconds per question',
+          desc: 'Teams will watch short 1-minute video clips. Questions will be based on basic observations from the video. Answers must be written on paper using a pen.',
+          points: [
+            'Questions asked immediately after the clip',
+            '10-15 seconds to write each answer',
+            'Correct answer: +10 points',
+            'No negative marking in this round'
+          ]
+        },
+        {
+          name: 'Round 2: Mind Twist (Screen Round)',
+          meta: '20-30 seconds to discuss',
+          desc: 'A video will be displayed on the screen. Questions will be deeper, testing logic, memory, and analytical thinking rather than just surface-level observation.',
+          points: [
+            'Teams get 20-30 seconds to discuss before answering',
+            'Correct answer: +20 points',
+            'Bonus for creative answers: +5 points'
+          ]
+        }
+      ],
+      rules: [
+        'Individual participation is not allowed',
+        'Teams must maintain discipline and silence during the event',
+        'Mobile phones and external help are strictly prohibited',
+        'All answers must be given within the allotted time',
+        'In case of a tie, a tie-breaker round will be conducted',
+        'The decision of coordinators/judges is final'
+      ],
+      scoring: [
+        { label: 'Observation Accuracy', desc: 'Noticing small, easily missed details in 60 seconds' },
+        { label: 'Analytical Thinking', desc: 'Drawing logical conclusions from events in the video' },
+        { label: 'Memory Retention', desc: 'Holding visual information correctly under time pressure' }
+      ],
+      highlight: ''
     }
   };
 
@@ -1954,6 +2407,55 @@ document.getElementById('subBtn').addEventListener('click', function () {
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeModal();
+  });
+})();
+
+/* ═══ SECTION GLOWS & SPARKLES ═══ */
+(function() {
+  const sections = document.querySelectorAll('.section, .section-alt');
+  const glowColors = [
+    'rgba(30,111,255,0.06)',
+    'rgba(245,166,35,0.05)',
+    'rgba(30,111,255,0.04)',
+    'rgba(245,166,35,0.06)',
+    'rgba(100,160,255,0.05)',
+  ];
+
+  sections.forEach((sec, i) => {
+    // Add grid overlay
+    const grid = document.createElement('div');
+    grid.className = 'grid-overlay';
+    sec.style.position = 'relative';
+    sec.appendChild(grid);
+
+    // Add glow orb
+    const glow = document.createElement('div');
+    glow.className = 'section-glow';
+    const size = 200 + Math.random() * 200;
+    glow.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${glowColors[i % glowColors.length]};
+      top:${20 + Math.random() * 40}%;
+      ${i % 2 === 0 ? 'right' : 'left'}:${-30 + Math.random() * 20}px;
+      animation-delay:${i * 1.5}s;
+    `;
+    sec.appendChild(glow);
+
+    // Add sparkle dots
+    const sparkleCount = window.innerWidth < 600 ? 2 : 4;
+    for (let s = 0; s < sparkleCount; s++) {
+      const spark = document.createElement('div');
+      spark.className = 'sparkle';
+      spark.style.cssText = `
+        top:${10 + Math.random() * 80}%;
+        left:${5 + Math.random() * 90}%;
+        animation-delay:${Math.random() * 4}s;
+        animation-duration:${1.5 + Math.random() * 2}s;
+        width:${2 + Math.random() * 2}px;
+        height:${2 + Math.random() * 2}px;
+      `;
+      sec.appendChild(spark);
+    }
   });
 })();
 </script>
