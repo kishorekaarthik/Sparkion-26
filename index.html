@@ -32,6 +32,25 @@ body {
   cursor: none;
 }
 
+/* ═══ PRELOADER ═══ */
+#preloader {
+  position: fixed; inset: 0; z-index: 999999;
+  background: var(--navy); display: flex;
+  align-items: center; justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s;
+}
+#preloader.hidden { opacity: 0; visibility: hidden; }
+.preloader-logo {
+  width: 250px; max-width: 70vw; border-radius: 50%;
+  filter: drop-shadow(0 0 15px rgba(245,166,35,0.4));
+  animation: pulseLogo 2.5s ease-in-out infinite alternate;
+}
+@keyframes pulseLogo {
+  0% { transform: scale(0.95); filter: drop-shadow(0 0 10px rgba(245,166,35,0.2)); }
+  100% { transform: scale(1.05); filter: drop-shadow(0 0 45px rgba(245,166,35,0.9)); }
+}
+body.loading { overflow: hidden; }
+
 /* ═══ CUSTOM CURSOR ═══ */
 .cursor-dot {
   position: fixed; top: 0; left: 0; z-index: 9999;
@@ -166,6 +185,15 @@ nav {
 @keyframes glow-pulse {
   0%,100% { transform: translate(-50%,-55%) scale(1); opacity: 0.8; }
   50%      { transform: translate(-50%,-55%) scale(1.1); opacity: 1; }
+}
+
+.hero-watermark {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90vh; max-height: 800px; width: auto;
+  opacity: 0.12; pointer-events: none;
+  mix-blend-mode: screen; z-index: 1;
+  filter: grayscale(20%) contrast(1.2);
 }
 
 .hero-inner {
@@ -318,6 +346,29 @@ nav {
   transition: border-color 0.2s, background 0.2s;
 }
 .btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+
+/* ═══ COUNTDOWN ═══ */
+.countdown-wrap {
+  display: flex; gap: 0.8rem; justify-content: center;
+  margin-bottom: 2.2rem;
+  animation: fadeUp 0.6s 0.4s both;
+}
+.cd-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(245,166,35,0.25);
+  border-radius: 12px; padding: 0.7rem 1.1rem;
+  min-width: 75px; text-align: center;
+  backdrop-filter: blur(10px);
+}
+.cd-num {
+  display: block; font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem; font-weight: 900; color: var(--gold);
+}
+.cd-label {
+  display: block; font-size: 0.65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--muted); margin-top: 0.2rem;
+}
 
 /* Scroll bounce */
 .scroll-cue {
@@ -1128,8 +1179,12 @@ footer {
 }
 </style>
 </head>
-<body>
+<body class="loading">
 
+<!-- PRELOADER -->
+<div id="preloader">
+  <img src="logo.jpg" alt="SPARKION'26 Logo" class="preloader-logo">
+</div>
 <canvas id="bg-canvas"></canvas>
 
 <!-- CUSTOM CURSOR -->
@@ -1156,6 +1211,7 @@ footer {
 <!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
+  <img src="logo.jpg" alt="" class="hero-watermark">
 
   <div class="hero-inner">
     <div class="hero-tag">
@@ -1203,6 +1259,14 @@ footer {
       <div class="hero-pill"><span class="pill-key">Venue</span><span class="pill-val">GCE Tirunelveli</span></div>
       <div class="hero-pill"><span class="pill-key">Entry Fee</span><span class="pill-val">₹250 (Pay Online)</span></div>
       <div class="hero-pill"><span class="pill-key">Last Date</span><span class="pill-val">April 5, 2026</span></div>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown-wrap" id="countdown">
+      <div class="cd-box"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Mins</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Secs</span></div>
     </div>
 
     <div class="hero-btns">
@@ -1466,10 +1530,10 @@ footer {
     <div class="timeline" id="timeline">
       <div class="tl-item"><div class="tl-time">9:00 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Registration &amp; Check-In</div><div class="tl-sub">Collect your event kit at the entrance. Accommodation check-in also starts.</div></div></div>
       <div class="tl-item"><div class="tl-time">10:00 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Inauguration Ceremony</div><div class="tl-sub">Welcome address, Chief Guest speech, and the official lamp-lighting ceremony.</div></div></div>
-      <div class="tl-item"><div class="tl-time">11:00 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Events Begin!</div><div class="tl-sub">All events kick off simultaneously. Head to your event hall with your registration slip.</div></div></div>
+      <div class="tl-item"><div class="tl-time">10:30 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Events Begin!</div><div class="tl-sub">All events kick off simultaneously. Head to your event hall with your registration slip.</div></div></div>
       <div class="tl-item"><div class="tl-time">1:00 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Lunch Break</div><div class="tl-sub">Lunch provided for all registered participants. Relax and mingle!</div></div></div>
       <div class="tl-item"><div class="tl-time">2:00 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Finals &amp; Second Rounds</div><div class="tl-sub">Qualified participants advance to elimination and final rounds.</div></div></div>
-      <div class="tl-item"><div class="tl-time">5:00 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Prize Distribution &amp; Closing</div><div class="tl-sub">Results announced, prizes awarded, and certificates given to all participants.</div></div></div>
+      <div class="tl-item"><div class="tl-time">4:30 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Prize Distribution &amp; Closing</div><div class="tl-sub">Results announced, prizes awarded, and certificates given to all participants.</div></div></div>
     </div>
   </div>
 </section>
@@ -1573,7 +1637,7 @@ footer {
           </svg>
         </div>
         <div class="contact-label">Follow Us</div>
-        <div class="contact-val">Instagram: <a href="https://instagram.com/sparkion26" target="_blank">@sparkion26</a><br><br>Updates and announcements posted regularly.</div>
+        <div class="contact-val">Instagram: <a href="https://www.instagram.com/sparkion._.2k26" target="_blank">@sparkion._.2k26</a><br><br>Updates and announcements posted regularly.</div>
       </div>
       <div class="contact-card">
         <div class="contact-icon">📞</div>
@@ -2557,7 +2621,14 @@ window.addEventListener('scroll', () => {
       tagline: 'A photography contest to capture the essence and energy around the given theme.',
       team: 'Single participant',
       duration: 'Online Submission',
-      rounds: [],
+      rounds: [
+        {
+          name: 'Event Description',
+          meta: 'Theme: Campus chaos',
+          desc: 'Participants must capture dynamic and candid moments that reflect the vibrant, energetic and chaotic life on campus. The photograph should creatively portray real college experiences, emotions, movements or unexpected situations.',
+          points: []
+        }
+      ],
       rules: [
         'Each participant can submit only one photograph',
         'Photos must be original and captured by the participant',
@@ -2793,6 +2864,43 @@ window.addEventListener('scroll', () => {
       sec.appendChild(spark);
     }
   });
+
+  // Preloader removal
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const p = document.getElementById('preloader');
+      if (p) p.classList.add('hidden');
+      document.body.classList.remove('loading');
+    }, 2500);
+  });
+  // Countdown logic
+  (function() {
+    const eventTime = new Date('April 7, 2026 09:00:00').getTime();
+    const dEl = document.getElementById('cd-days');
+    const hEl = document.getElementById('cd-hours');
+    const mEl = document.getElementById('cd-mins');
+    const sEl = document.getElementById('cd-secs');
+
+    function updateCd() {
+      const diff = eventTime - new Date().getTime();
+      if (diff <= 0) return;
+      
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / 1000 / 60) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      if (dEl) dEl.innerText = d.toString().padStart(2, '0');
+      if (hEl) hEl.innerText = h.toString().padStart(2, '0');
+      if (mEl) mEl.innerText = m.toString().padStart(2, '0');
+      if (sEl) sEl.innerText = s.toString().padStart(2, '0');
+    }
+    
+    // Initial call and interval setup
+    updateCd();
+    setInterval(updateCd, 1000);
+  })();
+
 })();
 </script>
 </body>
