@@ -663,7 +663,7 @@ nav {
 
 /* ═══ CONTACT ═══ */
 .contact-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem;
 }
 .contact-card {
   background: rgba(255,255,255,0.04);
@@ -1233,7 +1233,7 @@ footer {
         <div class="section-eyebrow">About the Event</div>
         <h2 class="section-heading">What is SPARKION'26?</h2>
         <p class="section-sub">
-          SPARKION'26 is a national-level symposium hosted by the Society of Electrical
+          SPARKION'26 is a national-level symposium hosted by the Department of Electrical &amp; Electronics Engineering and the Society of Electrical
           and Electronics Engineers (SEEE) at GCE Tirunelveli. Students from across India
           compete, showcase their skills, and win prizes — in a fun, energetic environment.
         </p>
@@ -1242,7 +1242,7 @@ footer {
           an event built just for you. Register for just ₹250 and be part of the excitement!
         </p>
         <div class="about-stats">
-          <div class="stat-card"><span class="stat-n">15+</span><span class="stat-l">Events</span></div>
+          <div class="stat-card"><span class="stat-n">10+</span><span class="stat-l">Events</span></div>
           <div class="stat-card"><span class="stat-n">3</span><span class="stat-l">Categories</span></div>
           <div class="stat-card"><span class="stat-n">₹250</span><span class="stat-l">Entry Only</span></div>
         </div>
@@ -1265,6 +1265,10 @@ footer {
           <div class="why-icon">🎓</div>
           <div class="why-text"><strong>Certificate for All</strong>Every participant takes home an official participation certificate.</div>
         </div>
+        <div class="why-item">
+          <div class="why-icon">🍽️</div>
+          <div class="why-text"><strong>Free Food</strong>Lunch and refreshments will be provided free of cost.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1280,7 +1284,7 @@ footer {
     </div>
     <div class="ev-tabs">
       <button class="ev-tab on" onclick="switchTab(this,'tech')">⚡ Technical</button>
-      <button class="ev-tab" onclick="switchTab(this,'fun')">🎭 Fun &amp; Games</button>
+      <button class="ev-tab" onclick="switchTab(this,'fun')">🎭 Non Technical</button>
       <button class="ev-tab" onclick="switchTab(this,'online')">🌐 Online</button>
     </div>
 
@@ -1294,18 +1298,17 @@ footer {
 
     <div class="ev-panel" id="p-fun">
       <div class="ev-card reveal" data-event="cine-quiz"><span class="ev-emoji">🎬</span><div class="ev-name">Cine Quiz</div><p class="ev-desc">A buzzer quiz on Tamil and Indian cinema — songs, actors, and iconic dialogues.</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">🖼️</span><div class="ev-name">Visual Vault</div><p class="ev-desc">Spot hidden images and solve visual puzzles. Sharp eyes and quick thinking win!</p></div>
+      <div class="ev-card reveal" data-event="visual-vault"><span class="ev-emoji">🖼️</span><div class="ev-name">Visual Vault</div><p class="ev-desc">Spot hidden images and solve visual puzzles. Sharp eyes and quick thinking win!</p></div>
       <div class="ev-card reveal" data-event="paatu-paada-vaa"><span class="ev-emoji">🎵</span><div class="ev-name">Paatu Paada Vaa</div><p class="ev-desc">Guess the Tamil song and sing the next line. Fun, musical, and full of energy!</p></div>
       <div class="ev-card reveal" data-event="minutes-mystery"><span class="ev-emoji">🧠</span><div class="ev-name">Minutes Mystery</div><p class="ev-desc">60 seconds to memorize. 60 seconds to recall. An intense and fun memory battle.</p></div>
       <div class="ev-card reveal" data-event="clue-the-view"><span class="ev-emoji">🗺️</span><div class="ev-name">Clue the View</div><p class="ev-desc">Identify famous places from clever visual clues. Great for travel lovers!</p></div>
     </div>
 
     <div class="ev-panel" id="p-online">
-      <div class="ev-card reveal"><span class="ev-emoji">📸</span><div class="ev-name">Photography</div><p class="ev-desc">Submit your best photo on the given theme. Creativity and story matter most.</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">🎨</span><div class="ev-name">Poster Design</div><p class="ev-desc">Design a digital poster using any tool you like. Make it bold and impactful.</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">📊</span><div class="ev-name">Presentation</div><p class="ev-desc">Create a slide deck on a technical topic. Clear, structured, and visually sharp.</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">😂</span><div class="ev-name">Meme Creation</div><p class="ev-desc">Make funny, original engineering memes. The most relatable entries win!</p></div>
-      <div class="ev-card reveal"><span class="ev-emoji">🎥</span><div class="ev-name">Short Film</div><p class="ev-desc">Submit a short film under 5 minutes on the given theme. Tell a great story.</p></div>
+      <div class="ev-card reveal" data-event="photography"><span class="ev-emoji">📸</span><div class="ev-name">Photography</div><p class="ev-desc">Submit your best photo on the given theme. Creativity and story matter most.</p></div>
+      <div class="ev-card reveal" data-event="poster-presentation"><span class="ev-emoji">🎨</span><div class="ev-name">Poster Presentation</div><p class="ev-desc">Design a digital poster on electrical topics and present your innovative ideas.</p></div>
+      <div class="ev-card reveal" data-event="meme-creation"><span class="ev-emoji">😂</span><div class="ev-name">Meme Creation</div><p class="ev-desc">Make funny, original engineering & college memes. The most relatable entries win!</p></div>
+      <div class="ev-card reveal" data-event="short-film"><span class="ev-emoji">🎥</span><div class="ev-name">Short Film</div><p class="ev-desc">Submit a short film or acting scene. Tell a great story and showcase your talent.</p></div>
     </div>
   </div>
 </section>
@@ -1340,7 +1343,7 @@ footer {
       <div class="reveal-left">
         <div class="coord-group-label">Faculty</div>
         <div class="coord-card"><div class="coord-avatar">PL</div><div><div class="coord-name">Dr. P. Latha</div><div class="coord-role">Principal, GCE Tirunelveli</div></div><span class="coord-badge">Patron</span></div>
-        <div class="coord-card"><div class="coord-avatar">SP</div><div><div class="coord-name">Dr. P. Suganthi</div><div class="coord-role">Head of Department, EEE</div></div><span class="coord-badge">President</span></div>
+        <div class="coord-card"><div class="coord-avatar">SP</div><div><div class="coord-name">Dr. J. Suganthi</div><div class="coord-role">Head of Department, EEE</div></div><span class="coord-badge">President</span></div>
         <div class="coord-card"><div class="coord-avatar">TA</div><div><div class="coord-name">Dr. A. Thangaraj</div><div class="coord-role">Assistant Professor, EEE</div></div><span class="coord-badge">Coordinator</span></div>
       </div>
       <div class="reveal-right">
@@ -1401,9 +1404,18 @@ footer {
     </div>
     <div class="contact-grid reveal">
       <div class="contact-card">
-        <div class="contact-icon">📍</div>
-        <div class="contact-label">Venue</div>
-        <div class="contact-val">Government College of Engineering<br>Tirunelveli — 627 002<br>Tamil Nadu, India</div>
+        <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #ff4757;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div class="contact-label">Happening at</div>
+        <div class="contact-val">
+          <a href="https://maps.app.goo.gl/ovR7BPutrePcb2fKA" target="_blank">
+            Government College of Engineering<br>Palayamkottai, Tirunelveli - 627007<br>Tamil Nadu, India
+          </a>
+        </div>
       </div>
       <div class="contact-card">
         <div class="contact-icon">✉️</div>
@@ -1411,9 +1423,20 @@ footer {
         <div class="contact-val"><a href="mailto:sparkion26@gmail.com">sparkion26@gmail.com</a><br><br>We typically reply within 24 hours.</div>
       </div>
       <div class="contact-card">
-        <div class="contact-icon">📱</div>
+        <div class="contact-icon" style="display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #E1306C;">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </div>
         <div class="contact-label">Follow Us</div>
         <div class="contact-val">Instagram: <a href="https://instagram.com/sparkion26" target="_blank">@sparkion26</a><br><br>Updates and announcements posted regularly.</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div class="contact-label">Call Us</div>
+        <div class="contact-val">Student: <a href="tel:+919342602869">9342602869</a><br>Faculty: <a href="tel:+919489940850">9489940850</a><br><br>Available during business hours.</div>
       </div>
     </div>
   </div>
@@ -1436,7 +1459,7 @@ footer {
         <svg width="20" height="26" viewBox="0 0 24 32" fill="none"><path d="M14 2L2 18h9l-1 12L22 14h-9l1-12z" fill="#f5a623"/></svg>
         SPARKION'26
       </div>
-      <p class="footer-tagline">National Level Technical Symposium<br>Department of EEE · SEEE · GCE Tirunelveli<br>April 7, 2026</p>
+      <p class="footer-tagline">National Level Technical Symposium<br>Department of EEE · SEEE<br>GCE Tirunelveli<br>April 7, 2026</p>
     </div>
     <div>
       <div class="footer-col-title">Quick Links</div>
@@ -1451,11 +1474,11 @@ footer {
     <div>
       <div class="footer-col-title">Info</div>
       <ul class="footer-links">
-        <li><span>📅 April 7, 2026</span></li>
-        <li><span>⏰ Last date: April 5</span></li>
-        <li><span>💳 Entry: ₹250 (Pay online)</span></li>
-        <li><span>🏠 Accommodation available</span></li>
-        <li><a href="mailto:sparkion26@gmail.com">✉️ sparkion26@gmail.com</a></li>
+        <li><span>April 7, 2026</span></li>
+        <li><span>Last date: April 5</span></li>
+        <li><span>Entry: ₹250 (Pay online)</span></li>
+        <li><span>Accommodation available</span></li>
+        <li><a href="mailto:sparkion26@gmail.com">sparkion26@gmail.com</a></li>
       </ul>
     </div>
   </div>
@@ -2312,6 +2335,177 @@ window.addEventListener('scroll', () => {
         { label: 'Memory Retention', desc: 'Holding visual information correctly under time pressure' }
       ],
       highlight: ''
+    },
+    'visual-vault': {
+      name: 'Visual Vault',
+      tagline: 'Spot hidden images and solve visual puzzles. Sharp eyes, quick thinking, and brand knowledge win!',
+      team: '2 to 3 members per team',
+      duration: '2 rounds + Tie-breaker if needed',
+      rounds: [
+        {
+          name: 'Round 1: Brand Snap',
+          meta: '10 challenges | +1 Point Base',
+          desc: 'Teams identify brands from cropped or partial logos shown briefly, by coming to the front and picking the correct object.',
+          points: [
+            'Logos will be shown briefly (Total 10 challenges)',
+            'Teams must come to the front first to pick the object',
+            'First team to come gets the chance',
+            'Only one pick per try. Wrong pick passes to next team',
+            'Correct: +1 point/challenge'
+          ]
+        },
+        {
+          name: 'Round 2: Clue Quest',
+          meta: '8 challenges | +2 Points Base',
+          desc: 'Teams identify brands from famous taglines shown on screen or read aloud.',
+          points: [
+            'Taglines shown on screen (Total 8 challenges)',
+            'Teams come front first to pick the object',
+            'First team gets the chance',
+            'Only one answer per try. Wrong answer passes to next team',
+            'Correct: +2 points/challenge'
+          ]
+        },
+        {
+          name: 'Tie-breaker Round',
+          meta: 'Rapid-fire questions',
+          desc: 'Tied top teams battle in rapid-fire brand questions—fastest correct answers win.',
+          points: []
+        }
+      ],
+      rules: [
+        'Every team should have 2 to 3 members',
+        'All teams need to arrive at the location punctually; delayed arrivals might not be allowed',
+        'Mobile devices, smartwatches, or any electronic devices are not permitted',
+        'Disputing with hosts/judges or arguing with other participants leads to elimination',
+        'Any cheating or unfair tactics will result in instant elimination',
+        'The quiz master\'s or judges\' verdict is final and non-negotiable'
+      ],
+      scoring: [
+        { label: 'Brand Recognition', desc: 'Speed and accuracy in recognizing partial logos (Round 1)' },
+        { label: 'Tagline Knowledge', desc: 'Identifying brands from taglines (Round 2)' },
+        { label: 'Speed & Agility', desc: 'Being the first to come to the front and pick the correct object' }
+      ],
+      highlight: 'Highest total score across rounds wins.'
+    },
+    'short-film': {
+      name: 'Lights, Camera, Act! (Short Film)',
+      tagline: 'Create a short film or perform an acting scene that showcases creativity, storytelling, and talent.',
+      team: '2 to 5 members per team',
+      duration: 'Max 6 minutes (including credits)',
+      rounds: [],
+      rules: [
+        'The performance or short film should not exceed 6 minutes (including credits)',
+        'If submitting a film, it must be in MP4 format (Recommended: 1920 × 1080 Full HD)',
+        'The content must be original and should not contain any watermark',
+        'No vulgar language, offensive scenes, or copyrighted material allowed',
+        'Participants may use simple props, but must arrange them themselves',
+        'Judges\' decision will be final'
+      ],
+      scoring: [
+        { label: 'Acting Skills', desc: 'Quality and convincing nature of the performances' },
+        { label: 'Creativity', desc: 'Originality of the concept and execution' },
+        { label: 'Storyline', desc: 'Engagement, flow, and impact of the narrative' },
+        { label: 'Overall Perf.', desc: 'Direction, cinematography (if film), and final output' }
+      ],
+      highlight: 'Genres: Comedy, Drama, Motivational, or based on a Social Message.'
+    },
+    'photography': {
+      name: 'Photography',
+      tagline: 'A photography contest to capture the essence and energy around the given theme.',
+      team: 'Single participant',
+      duration: 'Online Submission',
+      rounds: [],
+      rules: [
+        'Each participant can submit only one photograph',
+        'Photos must be original and captured by the participant',
+        'Basic editing such as brightness, contrast, and cropping is allowed',
+        'Heavy editing, AI-generated images, or photo manipulation is strictly not allowed',
+        'Photographs must be submitted in JPG or PNG format. File size should not exceed 10 MB',
+        'Watermarks, borders, or signatures should not be present in the photograph',
+        'Participants must send their photography through the official event email ID'
+      ],
+      scoring: [
+        { label: 'Theme Relevance', desc: 'How well the photo connects to "Campus chaos"' },
+        { label: 'Composition', desc: 'Framing, lighting, and visual balance' },
+        { label: 'Originality', desc: 'Unique perspective or timing of the shot' }
+      ],
+      highlight: 'Theme: Campus chaos. Email subject must be: Photography Event – Participant Name – College Name'
+    },
+    'meme-creation': {
+      name: 'Meme Creation',
+      tagline: 'Showcase your humor and creativity by making relatable photo memes about college life!',
+      team: 'Single participant',
+      duration: 'Online Submission',
+      rounds: [
+        {
+          name: 'Allowed Topics',
+          meta: 'Choose any of these to meme about',
+          desc: 'Create photo memes based on the following themes:',
+          points: [
+            'College & Hostel Life',
+            'Exam & Marks Humor',
+            'Committed Couples Cringe moments',
+            'Friendship Memes',
+            'Toppers VS Back benchers',
+            'Sports & games',
+            'When Teachers Says it\'s easy',
+            'Expectations VS Reality',
+            'Night Before Exam Chronicles',
+            'Group project be like',
+            'College Announcements Be like',
+            'Teachers Favourite Student',
+            'College Group Chat: War Zone VS Love Zone'
+          ]
+        }
+      ],
+      rules: [
+        'Only photo memes are allowed (no videos or GIFs)',
+        'Keep them funny and relatable to college life',
+        'Memes should be original creations',
+        'No derogatory, offensive, or highly controversial content',
+        'Judges\' decision based on humor and relatability will be final'
+      ],
+      scoring: [
+        { label: 'Humor & Relatability', desc: 'How funny and accurate the meme is to the student experience' },
+        { label: 'Creativity', desc: 'Clever use of templates or original formats' },
+        { label: 'Topic Relevance', desc: 'Sticking to the given college life topics' }
+      ],
+      highlight: 'Make us laugh! Check the allowed topics list in the rules overlay.'
+    },
+    'poster-presentation': {
+      name: 'Poster Presentation',
+      tagline: 'Present innovative ideas, research work, and technical knowledge through visually engaging digital posters.',
+      team: 'Single participant',
+      duration: 'Submit before April 4',
+      rounds: [
+        {
+          name: 'Allowed Technical Topics',
+          meta: 'Choose one of the following',
+          desc: 'Your digital poster must focus on one of these electrical-related themes:',
+          points: [
+            'Renewable Energy Systems',
+            'Electric Vehicles & Charging Technology',
+            'Artificial Intelligence in Power Systems',
+            'Wireless Power Transmission',
+            'Energy Storage & Battery Management Systems',
+            'Smart Grid Automation'
+          ]
+        }
+      ],
+      rules: [
+        'Poster must be in digital format (PDF / JPG / PNG)',
+        'Poster size must be A1',
+        'Participants must submit the poster before April 4',
+        'Plagiarism is strictly prohibited',
+        'Judges\' decision will be final'
+      ],
+      scoring: [
+        { label: 'Technical Content', desc: 'Accuracy and depth of the electrical topic presented' },
+        { label: 'Visual Design', desc: 'Layout, readability, and aesthetic appeal of the A1 poster' },
+        { label: 'Innovation', desc: 'Uniqueness of the idea or research highlighted' }
+      ],
+      highlight: 'Theme: Electrical Related. Enhances creativity, communication skills, and subject understanding.'
     }
   };
 
