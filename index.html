@@ -7,6 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <style>
+  html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -23,6 +27,10 @@
 }
 
 html { scroll-behavior: smooth; }
+#hero {
+  width: 100%;
+  max-width: 100vw;
+}
 
 body {
   background: var(--navy);
@@ -1566,15 +1574,14 @@ footer {
     <div class="timeline" id="timeline">
       <div class="tl-item"><div class="tl-time">9:00 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Registration &amp; Check-In</div><div class="tl-sub">Collect your event kit at the entrance. Accommodation check-in also starts.</div></div></div>
       <div class="tl-item"><div class="tl-time">10:00 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Inauguration Ceremony</div><div class="tl-sub">Welcome address, Chief Guest speech, and the official lamp-lighting ceremony.</div></div></div>
-      <div class="tl-item"><div class="tl-time">10:30 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Events Begin!</div><div class="tl-sub">All events kick off simultaneously. Head to your event hall with your registration slip.</div></div></div>
+      <div class="tl-item"><div class="tl-time">10:30 AM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Events Begin!</div><div class="tl-sub">All Techical events kick. Head to your event hall.</div></div></div>
       <div class="tl-item"><div class="tl-time">1:00 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Lunch Break</div><div class="tl-sub">Lunch provided for all registered participants. Relax and mingle!</div></div></div>
-      <div class="tl-item"><div class="tl-time">2:00 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Finals &amp; Second Rounds</div><div class="tl-sub">Qualified participants advance to elimination and final rounds.</div></div></div>
+      <div class="tl-item"><div class="tl-time">2:00 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Non-Technical Events Begin!</div><div class="tl-sub">Fun, creative, and cultural events kick off — Cine Quiz, Visual Vault, Paatu Paada Vaa, Minutes Mystery & more!</div></div></div>
       <div class="tl-item"><div class="tl-time">4:30 PM</div><div class="tl-dot-wrap"><div class="tl-dot"></div></div><div class="tl-body"><div class="tl-title">Prize Distribution &amp; Closing</div><div class="tl-sub">Results announced, prizes awarded, and certificates given to all participants.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- COORDINATORS -->
 <section class="section section-alt">
   <div class="container">
     <div class="reveal" style="margin-bottom:2.5rem">
@@ -1759,8 +1766,8 @@ if (!canvas) return;
   // Generate particles
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
-      x: Math.random() * 2000,
-      y: Math.random() * 1400,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
       r: 0.5 + Math.random() * 2,
       vx: (Math.random() - 0.5) * 0.3,
       vy: (Math.random() - 0.5) * 0.22,
@@ -2591,9 +2598,11 @@ window.addEventListener('scroll', () => {
           desc: 'Teams identify brands from cropped or partial logos shown briefly, by coming to the front and picking the correct object.',
           points: [
             'Logos will be shown briefly (Total 10 challenges)',
-            'Teams must come to the front first to pick the object',
+            'Teams must come to the front and pick an object to answer.',
             'First team to come gets the chance',
-            'Only one pick per try. Wrong pick passes to next team',
+            'Only one chance per try.',
+            'A wrong answer passes to the next team.',
+            'Only the team leader can answer',
             'Correct: +1 point/challenge'
           ]
         },
@@ -2606,6 +2615,7 @@ window.addEventListener('scroll', () => {
             'Teams come front first to pick the object',
             'First team gets the chance',
             'Only one answer per try. Wrong answer passes to next team',
+            'Only the team leader can answer',
             'Correct: +2 points/challenge'
           ]
         },
@@ -2635,7 +2645,7 @@ window.addEventListener('scroll', () => {
       name: 'Lights, Camera, Act! (Short Film)',
       tagline: 'Create a short film or perform an acting scene that showcases creativity, storytelling, and talent.',
       team: '2 to 5 members per team',
-      duration: 'Max 6 minutes (including credits)',
+      duration: 'Max 6 minutes (including credits). Submit before April 4 2026. Late entries will not be considered.',
       rounds: [],
       rules: [
         'The performance or short film should not exceed 6 minutes (including credits)',
@@ -2657,7 +2667,7 @@ window.addEventListener('scroll', () => {
       name: 'Photography',
       tagline: 'A photography contest to capture the essence and energy around the given theme.',
       team: 'Single participant',
-      duration: 'Online Submission',
+      duration: 'Online Submission. Submit before April 4 2026. Late entries will not be considered.',
       rounds: [
         {
           name: 'Event Description',
@@ -2685,7 +2695,7 @@ window.addEventListener('scroll', () => {
       name: 'Meme Creation',
       tagline: 'Showcase your humor and creativity by making relatable photo memes about college life!',
       team: 'Single participant',
-      duration: 'Online Submission',
+      duration: 'Online Submission. Submit before April 4 2026. Late entries will not be considered.',
       rounds: [
         {
           name: 'Allowed Topics',
