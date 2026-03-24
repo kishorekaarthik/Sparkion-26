@@ -1216,6 +1216,48 @@ footer {
   /* SVG icon size */
   .ev-emoji svg { width: 28px; height: 28px; }
 }
+/* ═══ HAMBURGER ═══ */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px; cursor: pointer; padding: 8px;
+  z-index: 400;
+}
+.hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: var(--white); border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed; top: 62px; left: 0; right: 0;
+    background: rgba(6,13,31,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column; align-items: center;
+    padding: 1.5rem 0; gap: 0;
+    display: none; z-index: 299;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    height: auto; line-height: 1;
+    padding: 0.9rem 2rem; font-size: 0.95rem;
+    width: 100%; text-align: center; color: var(--white);
+  }
+  .nav-links a:hover { background: rgba(245,166,35,0.08); color: var(--gold); }
+}
+
+@media (max-width: 600px) {
+  .nav-links { top: 56px; }
+}
 </style>
 </head>
 <body class="loading">
@@ -1236,23 +1278,21 @@ footer {
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav id="main-nav">
   <a href="#" class="nav-logo">
-    <svg class="nav-logo-bolt" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M14 2L2 18h9l-1 12L22 14h-9l1-12z" fill="#f5a623" stroke="#ffe44d" stroke-width="0.5"/>
-    </svg>
+    <img src="logo.jpg" alt="SPARKION'26" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
     SPARKION'26
   </a>
-  <ul class="nav-links">
-    <li><a href="#events">Events</a></li>
-    <li><a href="#schedule">Schedule</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#events" onclick="closeMenu()">Events</a></li>
+    <li><a href="#schedule" onclick="closeMenu()">Schedule</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
   </ul>
- <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRYgdgBvxgvPkAmTG8fXyFtBRZdeQJy3qZ38vqq7roKMzyHA/viewform" class="nav-btn">Register</a>-->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
@@ -3025,6 +3065,22 @@ window.addEventListener('scroll', () => {
   })();
 
 })();
+/* ═══ HAMBURGER MENU ═══ */
+function toggleMenu() {
+  const links = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  links.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+// Close on outside click
+document.addEventListener('click', e => {
+  const nav = document.getElementById('main-nav');
+  if (!nav.contains(e.target)) closeMenu();
+}); 
 </script>
 </body>
 </html>
