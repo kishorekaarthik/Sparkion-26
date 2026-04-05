@@ -379,6 +379,33 @@ nav {
   color: var(--muted); margin-top: 0.2rem;
 }
 
+/* ═══ HERO ALERT BANNER ═══ */
+.hero-alert {
+  position: absolute; top: 72px; left: 50%; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(245,166,35,0.12);
+  border: 1px solid rgba(245,166,35,0.5);
+  border-radius: 100px; padding: 0.45rem 1.2rem;
+  font-size: 0.78rem; font-weight: 600; color: var(--gold);
+  white-space: nowrap; z-index: 3;
+  animation: alertSlide 0.6s ease both;
+  backdrop-filter: blur(10px);
+  max-width: 90vw; white-space: normal; text-align: center;
+}
+@keyframes alertSlide {
+  from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.alert-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold); flex-shrink: 0;
+  animation: alertPulse 1.4s ease-in-out infinite;
+}
+@keyframes alertPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,166,35,0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(245,166,35,0); }
+}
+
 /* Scroll bounce */
 .scroll-cue {
   position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
@@ -1298,6 +1325,12 @@ footer {
   <div class="hero-glow"></div>
   <img src="logo.jpg" alt="" class="hero-watermark">
 
+  <!-- ANNOUNCEMENT BANNER -->
+  <div class="hero-alert">
+    <span class="alert-dot"></span>
+    <span>Registration Extended &nbsp;&middot;&nbsp; On-Spot Registration is now available for all events!</span>
+  </div>
+
   <div class="hero-inner">
     <div class="hero-tag">
       <span class="tag-dot"></span>
@@ -2175,11 +2208,10 @@ window.addEventListener('scroll', () => {
       rounds: [
         {
           name: 'Phase 1: Abstract Screening',
-          meta: 'Submit before April 4, 2026',
+          meta: 'Online Submission',
           desc: 'Participants submit their paper abstract before the event. Selected teams will be allowed to present their work during the presentation round.',
           points: [
-            'Each team must submit an abstract before 04.04.2026',
-            'Email abstract to: ideaspark2026@gmail.com',
+            'Each team must submit an abstract to: ideaspark2026@gmail.com',
             'Topics must be related to Electrical and Electronic domains'
           ]
         },
@@ -2207,7 +2239,7 @@ window.addEventListener('scroll', () => {
         '7 minutes presentation + Q&A',
         'Only original work is allowed — plagiarism is strictly prohibited',
         'Presentation should be prepared using PowerPoint or similar tools',
-        'Submit abstract before 04.04.2026 to ideaspark2026@gmail.com'
+        'Submit abstract to ideaspark2026@gmail.com'
       ],
       scoring: [
         { label: 'Technical Depth', desc: 'Level of understanding and explanation of the engineering concept' },
@@ -2216,7 +2248,7 @@ window.addEventListener('scroll', () => {
         { label: 'Structure & Delivery', desc: 'Logical organization of slides and clarity in presenting' },
         { label: 'Technical Discussion', desc: 'Ability to justify the idea and respond to questions' }
       ],
-      highlight: 'Submit your abstract before April 4, 2026 to ideaspark2026@gmail.com to participate.'
+      highlight: 'Email your abstract to ideaspark2026@gmail.com to participate. On-Spot Registration is also available!'
     },
     'code-clash': {
       name: 'Code Clash',
@@ -2713,7 +2745,7 @@ window.addEventListener('scroll', () => {
       name: 'Lights, Camera, Act! (Short Film)',
       tagline: 'Create a short film or perform an acting scene that showcases creativity, storytelling, and talent.',
       team: '2 to 5 members per team',
-      duration: 'Max 6 minutes (including credits). Submit before April 4 2026. Late entries will not be considered.',
+      duration: 'Max 6 minutes (including credits). Online Submission.',
       rounds: [],
       rules: [
         'The performance or short film should not exceed 6 minutes (including credits)',
@@ -2735,7 +2767,7 @@ window.addEventListener('scroll', () => {
       name: 'Photography',
       tagline: 'A photography contest to capture the essence and energy around the given theme.',
       team: 'Single participant',
-      duration: 'Online Submission. Submit before April 4 2026. Late entries will not be considered.',
+      duration: 'Online Submission.',
       rounds: [
         {
           name: 'Event Description',
@@ -2763,7 +2795,7 @@ window.addEventListener('scroll', () => {
       name: 'Meme Creation',
       tagline: 'Showcase your humor and creativity by making relatable photo memes about college life!',
       team: 'Single participant',
-      duration: 'Online Submission. Submit before April 4 2026. Late entries will not be considered.',
+      duration: 'Online Submission.',
       rounds: [
         {
           name: 'Allowed Topics',
@@ -2804,7 +2836,7 @@ window.addEventListener('scroll', () => {
       name: 'Poster Presentation',
       tagline: 'Present innovative ideas, research work, and technical knowledge through visually engaging digital posters.',
       team: 'Single participant',
-      duration: 'Submit before April 4',
+      duration: 'Online Submission.',
       rounds: [
         {
           name: 'Allowed Technical Topics',
@@ -2823,7 +2855,7 @@ window.addEventListener('scroll', () => {
       rules: [
         'Poster must be in digital format (PDF / JPG / PNG)',
         'Poster size must be A1',
-        'Participants must submit the poster before April 4',
+        'Participants must submit the poster via email to sparkion26@gmail.com',
         'Plagiarism is strictly prohibited',
         'Judges\' decision will be final'
       ],
