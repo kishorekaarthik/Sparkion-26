@@ -1343,7 +1343,7 @@ footer {
       <div class="hero-pill"><span class="pill-key">Date</span><span class="pill-val">April 7, 2026</span></div>
       <div class="hero-pill"><span class="pill-key">Venue</span><span class="pill-val">GCE Tirunelveli</span></div>
       <div class="hero-pill"><span class="pill-key">Entry Fee</span><span class="pill-val">₹250 (Pay Online)</span></div>
-      <div class="hero-pill"><span class="pill-key">Last Date</span><span class="pill-val">April 5, 2026</span></div>
+      <div class="hero-pill"><span class="pill-key">Registration</span><span class="pill-val">On-Spot Available</span></div>
     </div>
 
     <!-- COUNTDOWN -->
@@ -1389,6 +1389,7 @@ footer {
         <p style="font-size:0.95rem;color:var(--muted);line-height:1.75;margin-top:1rem">
           Whether you love coding, quizzes, photography, music, or storytelling — there's
           an event built just for you. Register for just ₹250 and be part of the excitement!
+          On-spot registration is available for all events — no prior deadline!
         </p>
         <div class="about-stats">
           <div class="stat-card"><span class="stat-n">10+</span><span class="stat-l">Events</span></div>
@@ -1417,6 +1418,10 @@ footer {
         <div class="why-item">
           <div class="why-icon">🍽️</div>
           <div class="why-text"><strong>Free Food</strong>Lunch and refreshments will be provided free of cost.</div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📋</div>
+          <div class="why-text"><strong>On-Spot Registration</strong>Walk in and register on the day of the event. No prior deadline!</div>
         </div>
       </div>
     </div>
@@ -1745,10 +1750,10 @@ footer {
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">
-        <svg width="20" height="26" viewBox="0 0 24 32" fill="none"><path d="M14 2L2 18h9l-1 12L22 14h-9l1-12z" fill="#f5a623"/></svg>
+      <a href="#" class="nav-logo">
+        <img src="logo.jpg" alt="SPARKION'26" style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
         SPARKION'26
-      </div>
+      </a>
       <p class="footer-tagline">National Level Technical Symposium<br>Department of EEE · SEEE<br>GCE Tirunelveli<br>April 7, 2026</p>
     </div>
     <div>
@@ -2010,7 +2015,7 @@ const events = [
   'Idea Spark', 'Code Clash', 'Tech Talk', 'Electro Quiz', 'Circuit Hunt',
   'Cine Quiz', 'Visual Vault', 'Paatu Paada Vaa', 'Minute Memory', 'Clue the View',
   'Photography', 'Poster Design', 'Meme Creation', 'Short Film', 'Presentation',
-  'April 7 · 2026', 'GCE Tirunelveli', 'Reg ₹250', 'Last Date Apr 5', 'Free Accommodation'
+  'April 7 · 2026', 'GCE Tirunelveli', 'Reg ₹250', 'On-Spot Registration', 'Free Accommodation'
 ];
 const tk = document.getElementById('ticker');
 const full = [...events, ...events].map(e =>
