@@ -381,20 +381,19 @@ nav {
 
 /* ═══ HERO ALERT BANNER ═══ */
 .hero-alert {
-  position: absolute; top: 72px; left: 50%; transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 0.6rem;
   background: rgba(245,166,35,0.12);
   border: 1px solid rgba(245,166,35,0.5);
   border-radius: 100px; padding: 0.45rem 1.2rem;
   font-size: 0.78rem; font-weight: 600; color: var(--gold);
-  white-space: nowrap; z-index: 3;
+  z-index: 3; margin: 0 auto 1.4rem;
   animation: alertSlide 0.6s ease both;
   backdrop-filter: blur(10px);
   max-width: 90vw; white-space: normal; text-align: center;
 }
 @keyframes alertSlide {
-  from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .alert-dot {
   width: 8px; height: 8px; border-radius: 50%;
@@ -1325,13 +1324,13 @@ footer {
   <div class="hero-glow"></div>
   <img src="logo.jpg" alt="" class="hero-watermark">
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div class="hero-alert">
-    <span class="alert-dot"></span>
-    <span>Registration Extended &nbsp;&middot;&nbsp; On-Spot Registration is now available for all events!</span>
-  </div>
-
   <div class="hero-inner">
+    <!-- ANNOUNCEMENT BANNER -->
+    <div class="hero-alert">
+      <span class="alert-dot"></span>
+      <span>Registration Extended &nbsp;&middot;&nbsp; On-Spot Registration is now available for all events!</span>
+    </div>
+
     <div class="hero-tag">
       <span class="tag-dot"></span>
       National Level Technical Symposium
@@ -1427,7 +1426,7 @@ footer {
         <div class="about-stats">
           <div class="stat-card"><span class="stat-n">10+</span><span class="stat-l">Events</span></div>
           <div class="stat-card"><span class="stat-n">3</span><span class="stat-l">Categories</span></div>
-          <div class="stat-card"><span class="stat-n">₹250</span><span class="stat-l">Entry Only</span></div>
+          <div class="stat-card"><span class="stat-n">₹250</span><span class="stat-l">Only</span></div>
         </div>
       </div>
       <div class="why-card reveal-right">
@@ -1697,7 +1696,7 @@ footer {
         </p>
         <div class="reg-highlights">
           <div class="reg-hl"><div class="reg-hl-icon">📅</div><div><div class="reg-hl-key">Event Date</div><div class="reg-hl-val">April 7, 2026 (Tuesday)</div></div></div>
-          <div class="reg-hl"><div class="reg-hl-icon">⏰</div><div><div class="reg-hl-key">Registration Closes</div><div class="reg-hl-val">April 5, 2026 — Don't miss it!</div></div></div>
+          <div class="reg-hl"><div class="reg-hl-icon">⏰</div><div><div class="reg-hl-key">Registration</div><div class="reg-hl-val">April 6, 2026 and On spot registration available too!!</div></div></div>
           <div class="reg-hl"><div class="reg-hl-icon">💳</div><div><div class="reg-hl-key">Payment</div><div class="reg-hl-val">₹250 paid via Google Form</div></div></div>
           <div class="reg-hl"><div class="reg-hl-icon">🏠</div><div><div class="reg-hl-key">Accommodation</div><div class="reg-hl-val">Free for outstation participants</div></div></div>
         </div>
